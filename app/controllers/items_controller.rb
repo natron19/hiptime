@@ -27,14 +27,17 @@ class ItemsController < ApplicationController
 
   def update
 
-    if @item.update
-      redirect_to @item
+    if @item.update(item_params)
+      redirect_to item_path(@item)
     else
       render 'edit'
     end
   end
 
   def destroy
+
+    @item.destroy
+    redirect_to root_path
 
   end
 
